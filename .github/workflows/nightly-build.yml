@@ -29,6 +29,8 @@ jobs:
     name: Release
     needs: [build]
     runs-on: ubuntu-latest
+    permissions:
+    contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Get version
@@ -78,8 +80,8 @@ jobs:
           name: inav-${{ steps.version.outputs.version }}-dev-${{ steps.date.outputs.today }}-${{ github.run_number }}-${{ github.sha }}
           tag_name: v${{ steps.version.outputs.version }}-${{ steps.date.outputs.today }}.${{ github.run_number }}
           # To create release on a different repo, we need a token setup
-          token: ${{ secrets.NIGHTLY_TOKEN }}
-          repository: iNavFlight/inav-nightly
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # repository: iNavFlight/inav-nightly
           prerelease: true
           draft: false
           #generate_release_notes: true

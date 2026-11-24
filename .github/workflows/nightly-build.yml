@@ -89,8 +89,9 @@ jobs:
           #generate_release_notes: true
           make_latest: false
           files: |
-            hexes/*.hex
-            sitl-resources.zip
+            #           hexes/*.hex
+            #           sitl-resources.zip
+            hexes/*DARWINFPVF435AIO*.hex
           body: |
             ${{ steps.notes.outputs.notes }}
 

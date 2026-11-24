@@ -384,6 +384,7 @@ jobs:
           path: ./build_SITL/*_SITL
 
   build-SITL-Mac:
+    if: false # ← ★これを追加するとMacビルドがスキップされます
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4

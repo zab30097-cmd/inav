@@ -76,6 +76,8 @@ jobs:
           zip -r -9 sitl-resources.zip resources/
       - name: Upload release artifacts
         uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: inav-${{ steps.version.outputs.version }}-dev-${{ steps.date.outputs.today }}-${{ github.run_number }}-${{ github.sha }}
           tag_name: v${{ steps.version.outputs.version }}-${{ steps.date.outputs.today }}.${{ github.run_number }}
